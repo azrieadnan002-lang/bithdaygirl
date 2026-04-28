@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Sofia ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 45px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.7);
+        }
+
+        #countdown {
+            font-size: 26px;
+            margin: 15px;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 25px;
+            display: inline-block;
+            max-width: 650px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .gallery {
+            margin-top: 20px;
+        }
+
+        img {
+            width: 260px;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        /* 🎵 MUSIC BOX */
+        #musicBox {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        /* ❤️ hearts */
+        .heart {
+            position: fixed;
+            top: -10px;
+            animation: fall linear forwards;
+            color: #ff4d6d;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh); opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC BOX -->
+<div id="musicBox">
+    <p>🎵 Tap this first for full experience 💖</p>
+    <button onclick="playMusic()" style="
+        padding:10px 15px;
+        border:none;
+        border-radius:20px;
+        background:white;
+        color:#ff4d6d;
+        font-weight:bold;
+        cursor:pointer;
+    ">
+        ▶️ Play Lagu
+    </button>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="lagu.mp3" type="audio/mp3">
+</audio>
+
+<h1>Happy Birthday My Baby ❤️</h1>
+
+<div id="countdown"></div>
+
+<!-- 💌 MAIN MESSAGE -->
+<div class="box">
+    <p>
+        Happy Birthday, Sofia (my sayang) 💖<br><br>
+        Thank you for being part of my life.<br>
+        You make everything feel better just by being you.<br><br>
+        I hope this year brings you happiness, love, and everything you deserve.<br><br>
+        I love you always ❤️
+    </p>
+</div>
+
+<!-- 📸 GAMBAR -->
+<div class="gallery">
+    <img src="gambar1.jpeg">
+    <img src="gambar2.jpeg">
+    <img src="gambar3.jpeg">
+</div>
+
+<!-- 📅 PLANNING -->
+<div class="box">
+
+    <p>Since Saturday is a bit busy, I planned something special for you on Sunday 💖</p>
+
+    <p>🌸 11:00 AM<br>
+    I’ll come and pick you up… and bring you flowers 🌷</p>
+    <img src="bunga.jpeg">
+
+    <p>🍽️ 12:30 PM<br>
+    We’ll go out for a nice meal together 🫶</p>
+    <img src="makan.jpeg">
+
+    <p>🎂 2:45 PM<br>
+    We’ll make a cake together ❤️</p>
+    <img src="kek.jpeg">
+
+    <p>🎁 6:00 PM onwards<br>
+    A small unboxing surprise just for you 🎀</p>
+    <img src="gift.jpeg">
+
+    <p>
+        I know it’s not something luxurious…<br>
+        but I hope it makes you smile.<br><br>
+
+        I’m sorry if it’s simple,<br>
+        but everything is from my heart, for you ❤️
+    </p>
+
+</div>
+
+<script>
+    function playMusic() {
+        const music = document.getElementById("bgMusic");
+        music.play();
+        document.getElementById("musicBox").style.display = "none";
+    }
+
+    var birthday = new Date("May 2, 2026 00:00:00").getTime();
+
+    setInterval(function() {
+        var now = new Date().getTime();
+        var d = birthday - now;
+
+        var days = Math.floor(d / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((d % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+    }, 1000);
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        heart.style.fontSize = (Math.random() * 10 + 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 120);
+</script>
+
+</body>
+</html>
